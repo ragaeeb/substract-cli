@@ -1,71 +1,16 @@
-import meow from 'meow';
+import { Result } from 'meow';
 import path from 'node:path';
 import { SubstractOptions } from 'substract';
 
-import { HELP_TEXT } from './constants.js';
+import { SubstractFlags } from './prompt.js';
 
-export const mapFlagsToOptions = (): SubstractOptions => {
-    const {
-        flags: {
-            appleBinaryPath,
-            bottom,
-            concurrency,
-            duplicateTextThreshold,
-            frequency,
-            left,
-            outputFile,
-            right,
-            top,
-        },
-        input,
-    } = meow(HELP_TEXT, {
-        flags: {
-            appleBinaryPath: {
-                isRequired: true,
-                shortflag: 'a',
-                type: 'string',
-            },
-            bottom: {
-                shortflag: 'b',
-                type: 'number',
-            },
-            concurrency: {
-                shortflag: 'c',
-                type: 'number',
-            },
-            duplicateTextThreshold: {
-                shortflag: 'd',
-                type: 'number',
-            },
-            frequency: {
-                shortflag: 'f',
-                type: 'number',
-            },
-            left: {
-                shortflag: 'l',
-                type: 'number',
-            },
-            outputFile: {
-                isRequired: (flags, input) => input.length === 0,
-                shortflag: 'o',
-                type: 'string',
-            },
-            right: {
-                shortflag: 'r',
-                type: 'number',
-            },
-            top: {
-                shortflag: 't',
-                type: 'number',
-            },
-        },
-
-        importMeta: import.meta,
-    });
-
+export const mapFlagsToOptions = ({
+    flags: { appleBinaryPath, bottom, concurrency, duplicateTextThreshold, frequency, left, outputFile, right, top },
+    input,
+}: Result<SubstractFlags>): SubstractOptions => {
     const [inputFile] = input;
 
-    const parsed = path.parse(inputFile);
+    const parsed = path.parse(path.resolve(inputFile));
 
     const hasCropOptions = Boolean(top || bottom || left || right);
 
@@ -86,6 +31,6 @@ export const mapFlagsToOptions = (): SubstractOptions => {
             },
         }),
         ocrOptions: { appleBinaryPath },
-        outputOptions: { outputFile: outputFile || path.format({ ...parsed, ext: '.json' }) },
+        outputOptions: { outputFile: outputFile || path.format({ dir: parsed.dir, ext: '.json', name: parsed.name }) },
     };
 };

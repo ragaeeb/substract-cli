@@ -4,13 +4,6 @@
     "description": "CLI for using the substract library.",
     "source": "src/index.ts",
     "type": "module",
-    "dependencies": {
-        "cli-welcome": "^3.0.0",
-        "log-symbols": "^7.0.0",
-        "meow": "^13.2.0",
-        "picocolors": "^1.1.1",
-        "substract": "^1.0.1"
-    },
     "bin": {
         "subtract-cli": "./src/index.ts"
     },
@@ -29,6 +22,14 @@
     ],
     "author": "Ragaeeb Haq",
     "license": "MIT",
+    "dependencies": {
+        "cli-welcome": "^3.0.0",
+        "conf": "^13.0.1",
+        "log-symbols": "^7.0.0",
+        "meow": "^13.2.0",
+        "picocolors": "^1.1.1",
+        "substract": "^1.0.1"
+    },
     "devDependencies": {
         "@eslint/js": "^9.13.0",
         "@semantic-release/changelog": "^6.0.3",
