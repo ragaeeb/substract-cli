@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+/* eslint-disable no-undef */
 import welcome from 'cli-welcome';
 import logSymbols from 'log-symbols';
 import { substract } from 'substract';

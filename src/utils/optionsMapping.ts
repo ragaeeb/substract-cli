@@ -31,6 +31,6 @@ export const mapFlagsToOptions = ({
             },
         }),
         ocrOptions: { appleBinaryPath },
-        outputOptions: { outputFile: outputFile || path.format({ dir: parsed.dir, ext: '.json', name: parsed.name }) },
+        outputOptions: { outputFile: outputFile || path.format({ dir: parsed.dir, ext: '.txt', name: parsed.name }) },
     };
 };

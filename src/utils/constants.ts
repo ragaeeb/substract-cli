@@ -15,7 +15,7 @@ ${logSymbols.info} Options
     ${green(underline('top'))}                 The number of pixels from the top of the video to crop to extract the subtitles.
     ${green(underline('left'))}                The number of pixels from the left of the video to crop to extract the subtitles.
     ${green(underline('right'))}               The number of pixels from the right of the video to crop to extract the subtitles.
-    ${green(underline('output-file'))}         The output file to write the extracted subtitles to. If this is omitted, the output file will be a JSON file in the same directory as the input.
+    ${green(underline('output-file'))}         The output file to write the extracted subtitles to. If this is omitted, the output file will be a .txt file in the same directory as the input.
 
 ${logSymbols.success} Examples
     npx substract-cli "tmp/video.mp4" --output-file "./video.srt" --top 10 --bottom 10
