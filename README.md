@@ -52,6 +52,12 @@ Example:
 
 ```bash
 substract-cli path/to/video.mp4 --output path/to/output.json --frequency 5
+
+# outputs 123456.txt
+substract-cli "https://www.facebook.com/watch/?v=123456"
+
+# outputs TKdI.txt
+substract-cli "https://www.youtube.com/watch?v=TKdI"
 ```
 
 ## Options
