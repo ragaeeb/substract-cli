@@ -4,7 +4,9 @@ import { Result } from 'meow';
 import path from 'node:path';
 import { URL } from 'node:url';
 import { SubstractOptions } from 'substract';
+import { TwitterDL } from 'twitter-downloader';
 
+import logger from './logger.js';
 import { SubstractFlags } from './prompt.js';
 
 export const urlToFilename = (urlString: string): string => {
@@ -69,12 +71,25 @@ export const mapFileOrUrlToInputSource = async (inputs: string[]): Promise<strin
 
     if (ytdl.validateURL(inputSource)) {
         const info = await ytdl.getInfo(inputSource);
-        let format = ytdl.chooseFormat(info.formats, { quality: '134' });
+        const format = ytdl.chooseFormat(info.formats, { quality: '134' });
+        logger.debug('YouTube format', format);
 
         inputSource = format.url;
-    } else if (inputSource.includes('facebook.com')) {
+    } else if (inputSource.includes('/facebook.com/')) {
         const info = await getFbVideoInfo(inputSource);
         inputSource = info.sd || info.hd;
+
+        logger.debug('Facebook format', info);
+    } else if (inputSource.includes('/x.com/') || inputSource.includes('/twitter.com/')) {
+        const info = await TwitterDL(inputSource);
+        const { videos = [] } = info.result?.media[0] || {};
+
+        logger.debug('Twitter format', videos);
+        const averageQualityVideo = videos.find((v) => v.quality === '1280x720');
+
+        if (averageQualityVideo?.url || videos[0].url) {
+            inputSource = averageQualityVideo?.url || videos[0].url;
+        }
     }
 
     return inputSource;

@@ -1,6 +1,6 @@
 {
     "name": "substract-cli",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "CLI for using the substract library.",
     "source": "src/index.ts",
     "main": "dist/main.js",
@@ -33,13 +33,15 @@
         "log-symbols": "^7.0.0",
         "meow": "^13.2.0",
         "picocolors": "^1.1.1",
-        "substract": "^1.0.1"
+        "pretty-js-log": "^1.1.1",
+        "substract": "^1.0.1",
+        "twitter-downloader": "^1.1.8"
     },
     "devDependencies": {
         "@eslint/js": "^9.14.0",
         "@semantic-release/changelog": "^6.0.3",
         "@types/eslint__js": "^8.42.3",
-        "@types/node": "^22.8.6",
+        "@types/node": "^22.9.0",
         "eslint": "^9.14.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.31.0",
@@ -47,6 +49,6 @@
         "eslint-plugin-prettier": "^5.2.1",
         "prettier": "^3.3.3",
         "semantic-release": "^24.2.0",
-        "typescript-eslint": "^8.12.2"
+        "typescript-eslint": "^8.14.0"
     }
 }

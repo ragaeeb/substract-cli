@@ -4,7 +4,7 @@
 [![Node.js CI](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml/badge.svg)](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml)
 ![GitHub License](https://img.shields.io/github/license/ragaeeb/substract-cli)
 ![GitHub Release](https://img.shields.io/github/v/release/ragaeeb/substract-cli)
-[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.0.0&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.0.0)
+[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.2.0&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.2.0)
 ![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label&color=blue)
 
 `substract-cli` is a command-line interface built to interact with the [substract](https://github.com/ragaeeb/substract) library, which enables efficient extraction of hard-coded subtitles from video files. This CLI leverages the `substract` library's powerful OCR-based subtitle extraction features, making it straightforward to integrate with video processing workflows directly from the command line.
@@ -25,6 +25,7 @@
 -   **User-Friendly CLI**: Simplified commands to streamline the subtitle extraction process.
 -   **Configurable Options**: Control extraction parameters such as frame frequency, duplicate text filtering, and OCR paths directly through CLI options.
 -   **Enhanced Logging**: Real-time feedback on extraction progress, including OCR and frame processing.
+-   **Popular Platforms**: Supports Facebook, X (formerly Twitter), YouTube links.
 
 ## Installation
 
@@ -38,6 +39,12 @@ Or
 
 ```bash
 npx substract-cli
+```
+
+Or
+
+```bash
+bunx substract-cli
 ```
 
 ## Usage
@@ -58,6 +65,8 @@ substract-cli "https://www.facebook.com/watch/?v=123456"
 
 # outputs TKdI.txt
 substract-cli "https://www.youtube.com/watch?v=TKdI"
+
+substract-cli "https://x.com/user/status/13245"
 ```
 
 ## Options
