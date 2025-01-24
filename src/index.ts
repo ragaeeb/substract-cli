@@ -19,20 +19,27 @@ const main = async () => {
 
     const cli = getCliArgs();
     const options = mapFlagsToOptions(cli);
-    const inputSource = await mapFileOrUrlToInputSource(cli.input);
+    const inputSources = await mapFileOrUrlToInputSource(cli.input);
 
-    if (!inputSource) {
+    if (!inputSources.length) {
         logger.warn(`${logSymbols.error} No video found at ${cli.input}`);
-        return;
     }
 
-    const result = await substract(inputSource, options);
+    for (const inputSource of inputSources) {
+        try {
+            const result = await substract(inputSource, options);
 
-    if (!result) {
-        logger.warn(`${logSymbols.error} Nothing written`);
+            if (result) {
+                logger.info(`${logSymbols.success} written ${result}`);
+            } else {
+                logger.warn(`${logSymbols.error} Nothing written`);
+            }
+
+            break;
+        } catch (err: any) {
+            logger.error(err);
+        }
     }
-
-    logger.info(`${logSymbols.success} written ${result}`);
 };
 
 main();

@@ -66,31 +66,39 @@ export const mapFlagsToOptions = ({
     };
 };
 
-export const mapFileOrUrlToInputSource = async (inputs: string[]): Promise<string> => {
+export const mapFileOrUrlToInputSource = async (inputs: string[]): Promise<string[]> => {
     let [inputSource] = inputs;
 
     if (ytdl.validateURL(inputSource)) {
         const info = await ytdl.getInfo(inputSource);
-        const format = ytdl.chooseFormat(info.formats, { quality: '134' });
-        logger.debug('YouTube format', format);
+        const { url: streamUrlForVideo } = ytdl.chooseFormat(info.formats, {
+            filter: 'videoonly',
+        });
 
-        inputSource = format.url;
+        const { url: streamUrlForAudioVideo } = ytdl.chooseFormat(info.formats, {
+            filter: 'audioandvideo',
+        });
+
+        return [streamUrlForVideo, streamUrlForAudioVideo];
     } else if (inputSource.includes('/facebook.com/')) {
         const info = await getFbVideoInfo(inputSource);
-        inputSource = info.sd || info.hd;
-
         logger.debug('Facebook format', info);
+
+        return [info.sd, info.hd].filter(Boolean);
     } else if (inputSource.includes('/x.com/') || inputSource.includes('/twitter.com/')) {
         const info = await TwitterDL(inputSource);
         const { videos = [] } = info.result?.media[0] || {};
 
         logger.debug('Twitter format', videos);
         const averageQualityVideo = videos.find((v) => v.quality === '1280x720');
+        const rest = videos.filter((v) => v.quality !== '1280x720');
 
-        if (averageQualityVideo?.url || videos[0].url) {
-            inputSource = averageQualityVideo?.url || videos[0].url;
+        if (averageQualityVideo) {
+            rest.unshift(averageQualityVideo);
         }
+
+        return rest.map((v) => v.url);
     }
 
-    return inputSource;
+    return [inputSource];
 };

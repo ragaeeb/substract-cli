@@ -4,7 +4,7 @@
 [![Node.js CI](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml/badge.svg)](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml)
 ![GitHub License](https://img.shields.io/github/license/ragaeeb/substract-cli)
 ![GitHub Release](https://img.shields.io/github/v/release/ragaeeb/substract-cli)
-[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.2.1&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.2.1)
+[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.2.2&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.2.2)
 ![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label&color=blue)
 
 `substract-cli` is a command-line interface built to interact with the [substract](https://github.com/ragaeeb/substract) library, which enables efficient extraction of hard-coded subtitles from video files. This CLI leverages the `substract` library's powerful OCR-based subtitle extraction features, making it straightforward to integrate with video processing workflows directly from the command line.
@@ -77,9 +77,9 @@ substract-cli "https://x.com/user/status/13245"
 | `--concurrency`       | number | The number of threads to use to process the OCR.                                                                                                                                                                                          |
 | `--frequency`         | number | The frequency in seconds after which to extract a frame for subtitles.                                                                                                                                                                    |
 | `--bottom`            | number | The percent of pixels from the bottom (ie: `20` for `20%`) of the video to crop to extract the subtitles.                                                                                                                                 |
-| `--top`               | number | The percent of pixels from the top of the video to crop to extract the subtitles.                                                                                                                                                         |
-| `--left`              | number | The percent of pixels from the left of the video to crop to extract the subtitles.                                                                                                                                                        |
-| `--right`             | number | The percent of pixels from the right of the video to crop to extract the subtitles.                                                                                                                                                       |
+| `--top`               | number | The percent of pixels from the top (ie: `20` for `20%`) of the video to crop to extract the subtitles.                                                                                                                                    |
+| `--left`              | number | The percent of pixels from the left (ie: `20` for `20%`) of the video to crop to extract the subtitles.                                                                                                                                   |
+| `--right`             | number | The percent of pixels from the right (ie: `20` for `20%`) of the video to crop to extract the subtitles.                                                                                                                                  |
 | `--output-file`       | number | The output file to write the extracted subtitles to. This can have a .json or .txt extension. If this is omitted, the output file will be a .txt file in the same directory as the input.                                                 |
 
 ## Requirements
