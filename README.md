@@ -4,7 +4,7 @@
 [![Node.js CI](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml/badge.svg)](https://github.com/ragaeeb/substract-cli/actions/workflows/build.yml)
 ![GitHub License](https://img.shields.io/github/license/ragaeeb/substract-cli)
 ![GitHub Release](https://img.shields.io/github/v/release/ragaeeb/substract-cli)
-[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.2.2&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.2.2)
+[![Size](https://deno.bundlejs.com/badge?q=substract-cli@1.3.0&badge=detailed)](https://bundlejs.com/?q=substract-cli%401.3.0)
 ![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label&color=blue)
 
 `substract-cli` is a command-line interface built to interact with the [substract](https://github.com/ragaeeb/substract) library, which enables efficient extraction of hard-coded subtitles from video files. This CLI leverages the `substract` library's powerful OCR-based subtitle extraction features, making it straightforward to integrate with video processing workflows directly from the command line.
