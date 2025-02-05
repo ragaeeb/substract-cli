@@ -1,6 +1,7 @@
 import ytdl from '@distube/ytdl-core';
 import getFbVideoInfo from 'fb-downloader-scrapper';
 import { Result } from 'meow';
+import os from 'node:os';
 import path from 'node:path';
 import { URL } from 'node:url';
 import { SubstractOptions } from 'substract';
@@ -32,11 +33,11 @@ const parseOutputFile = (input: string[]) => {
 
     if (isValidUrl(inputFile)) {
         const name = urlToFilename(inputFile);
-        return path.format({ ext: '.txt', name });
+        return path.format({ dir: os.tmpdir(), ext: '.txt', name });
     }
 
     const parsed = path.parse(path.resolve(inputFile));
-    return path.format({ dir: parsed.dir, ext: '.txt', name: parsed.name });
+    return path.format({ dir: os.tmpdir(), ext: '.txt', name: parsed.name });
 };
 
 export const mapFlagsToOptions = ({

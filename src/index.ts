@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 import welcome from 'cli-welcome';
 import logSymbols from 'log-symbols';
+import open from 'open';
 import { substract } from 'substract';
 
 import { name, version } from './utils/constants.js';
@@ -31,6 +32,7 @@ const main = async () => {
 
             if (result) {
                 logger.info(`${logSymbols.success} written ${result}`);
+                await open(result);
             } else {
                 logger.warn(`${logSymbols.error} Nothing written`);
             }
